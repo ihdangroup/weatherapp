@@ -74,6 +74,9 @@ export default function SearchWeather() {
                         <p className="card-text lead">
                              {day}, {month} {date}, {year}
                         </p>
+                        <div className="warn p-3 bg-light text-dark bg-opacity-50 rounded my-3">
+                            <p>Translating the page there will be an error</p>
+                        </div>
                         <form onSubmit = {handleSubmit}>
                             <div className="input-group rounded mb-4 w-75 mx-auto">
                                 <input type="search" className="form-control" placeholder="Search City" aria-label="Search City" value={input} aria-describedby="basic-addon2" onChange={(e) => setInput(e.target.value)} required/>
