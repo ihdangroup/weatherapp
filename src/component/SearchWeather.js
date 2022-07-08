@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import '../style/SearchWeather.css'
 
 export default function SearchWeather() {
     const [input, setInput] = useState('')
@@ -74,6 +75,9 @@ export default function SearchWeather() {
                         <p className="card-text lead">
                              {day}, {month} {date}, {year}
                         </p>
+                        <div className="warn p-3 bg-light text-dark bg-opacity-50 rounded my-3">
+                            <p>Translating the page there will be an error</p>
+                        </div>
                         <form onSubmit = {handleSubmit}>
                             <div className="input-group rounded mb-4 w-75 mx-auto">
                                 <input type="search" className="form-control" placeholder="Search City" aria-label="Search City" value={input} aria-describedby="basic-addon2" onChange={(e) => setInput(e.target.value)} required/>
@@ -85,10 +89,20 @@ export default function SearchWeather() {
                         <div className="bg-dark bg-opacity-50 rounded py-3">
                             <h2 className="card-title">{data.name}</h2>
                             <hr/>
-                            <i className={`fas ${emoji} fa-4x`}></i>
-                            <h1 className="fw-bolder mb-5">{temp}&deg;C</h1>
-                            <p className="lead fw-bolder mb-0">{data.weather[0].main}</p>
-                            <p className="lead"> {temp_min} &deg;C | {temp_max} &deg;C</p>
+                            <div className="cuaca d-flex">
+                                <div className="wraper text-center">
+                                    <div className="cloud d-flex justify-content-center align-items-center">
+                                        <i className={`emoji fas ${emoji} fa-4x`}></i>
+                                        <p className="px-3 lead fw-bolder mb-0">{data.weather[0].main}</p>
+                                    </div>
+                                    <h1 className="fw-bolder suhu mb-5">{temp}&deg;</h1>
+                                </div>
+                                <div className="temp">
+                                    <p className="lead"> {temp_min} &deg;C</p>
+                                    <p className="lead"> {temp_max} &deg;C</p>
+                                </div>
+                                
+                            </div>
                         </div>
                         <div className="footer py-5">
                             <p className="lead">WeatherApp &#169; 2022 Ikhdan Maghfuron</p>
